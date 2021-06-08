@@ -1,0 +1,22 @@
+{
+  "name": "hengamify",
+  "version": "0.0.2",
+  "description": "Some utils to interact with Shopify stores",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "docs": "npx typedoc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "shopify"
+  ],
+  "author": "Mojtaba Namazi Ghamsari",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^15.12.1",
+    "ts-node": "^10.0.0",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.3.2"
+  }
+}
