@@ -1,5 +1,5 @@
-import SampleClass from './src/SampleClass'
+import UrlUtils from './src/utils/UrlUtils'
 
 export {
-    SampleClass
+    UrlUtils
 }
