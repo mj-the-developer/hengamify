@@ -7,4 +7,5 @@ npm i hengamify
 ```
 
 ## Documentation
-Read through our documentatin [here](https://mj-the-developer.github.io/hengamify/)
+Read through our documentatin and get familiar with different classes, utils, 
+methods, etc. [here](https://mj-the-developer.github.io/hengamify/)
