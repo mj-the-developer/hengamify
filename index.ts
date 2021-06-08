@@ -1,5 +1,5 @@
-import SampleClass from './src/SampleClass'
+import InjectUtils from './src/utils/InjectUtils'
 
 export {
-    SampleClass
+    InjectUtils
 }
