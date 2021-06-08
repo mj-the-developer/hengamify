@@ -7,4 +7,4 @@ npm i hengamify
 ```
 
 ## Documentation
-Read through index.html in docs folder to get familiar with different utils
+Read through our documentatin <a href="https://mj-the-developer.github.io/hengamify/" target="_blank">here</a>
