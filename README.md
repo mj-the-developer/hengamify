@@ -6,4 +6,5 @@ Some utils to interact with Shopify stores
 npm i hengamify
 ```
 
-This section will complete very soon...
+## Documentation
+Read through index.html in docs folder to get familiar with different utils
