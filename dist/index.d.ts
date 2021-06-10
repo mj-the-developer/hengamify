@@ -1,2 +1,2 @@
-import SampleClass from './src/SampleClass';
-export { SampleClass };
+import StyleUtils from './src/utils/StyleUtils';
+export { StyleUtils };
