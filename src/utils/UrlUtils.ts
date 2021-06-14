@@ -28,13 +28,21 @@
     }
 
     /**
-     * Get the domain part of the URL
+     * Sanitize URL and remove unnecessary query parameters from it
      * 
-     * @param url The URL to get the base
+     * @returns The sanitized URL
+     */
+     static sanitizeUrl(url: string): string {
+        return url.replace(/^([^#?]+)(?:.*)$/, "$1")
+    }
+
+    /**
+     * Get the base URL for shopify API
+     * 
      * @returns The base URL
      */
-    static getBaseURL(url: string): (string | null) {
-        if (!url) return null
+    static getBaseURL(): (string | null) {
+        const url = window?.location?.href ?? ""
         const matched = url.match(/^((?:https?:\/\/)?[\w\.\-]+)\/?.*$/)
         if (matched) return matched[1]
         return null
@@ -67,16 +75,7 @@
      */
     static isHomePage(): boolean {
         const url = window?.location?.href ?? ""
-        return UrlUtils.getBaseURL(url) === url.replace(/\/+$/, "")
-    }
-
-    /**
-     * Sanitize URL and remove unnecessary query parameters from it
-     * 
-     * @returns The sanitized URL
-     */
-    static sanitizeUrl(url: string): string {
-        return url.replace(/^([^#?]+)(?:.*)$/, "$1")
+        return UrlUtils.getBaseURL() === url.replace(/\/+$/, "")
     }
 
     /**
@@ -93,10 +92,10 @@
     /**
      * Get first collection slug to use in calling Shopify APIs
      * 
-     * @param url The URL which collection slug resides in
      * @returns The first collection slug to use in calling Shopify API
      */
-    static getCollectionSlug(url: string): string {
+    static getCollectionSlug(): string {
+        const url = window?.location?.href ?? ''
         const urlArr = UrlUtils.sanitizeUrl(url).split('/collections/')
         return (urlArr[1].split('/'))[0]
     }
