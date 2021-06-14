@@ -1,5 +1,5 @@
-import InjectUtils from './src/utils/InjectUtils'
+import InjectionUtils from './src/utils/InjectionUtils'
 
 export {
-    InjectUtils
+    InjectionUtils
 }

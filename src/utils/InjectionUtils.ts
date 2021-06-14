@@ -1,14 +1,14 @@
 /**
  * Utilities to inject different html elements to shops html structure
  */
-export default class InjectUtils {
+export default class InjectionUtils {
     /**
      * Create the link element of the custom stylesheet and 
      * inject it to the head section of the document
      * 
      * @param url The url of the stylesheet
      */
-    static injectCustomStylesheet(url: string): void {
+    static injectLinkedStylesheet(url: string): void {
         const stylesheet = document.createElement('link')
         stylesheet.rel = 'stylesheet'
         stylesheet.href = url
@@ -21,7 +21,7 @@ export default class InjectUtils {
      * 
      * @param rawCss Raw css code to put into style block
      */
-    static injectCustomStyle(rawCss: string): void {
+    static injectRawStyle(rawCss: string): void {
         const stylesheet = document.createElement('style')
         stylesheet.textContent = rawCss
         document.head.appendChild(stylesheet)
@@ -29,27 +29,34 @@ export default class InjectUtils {
 
     /**
      * Try to inject the provided elements to one of 
-     * the wrappers provided in the wrappers list
+     * the wrappers provided in the wrappers list or their parents
      * 
      * @param elements List of HTML elements to inject to one of the wrappers
      * @param wrappers List of desired wrappers to inject the elements into them
+     * @param prepend Boolean to prepend the elements instead of appending
+     * @param injectToParent Either inject the elements to wrapper itself or its parent
      * @returns boolean which indicate if the injection were successful
      */
-    static injectElements(elements: HTMLElement[], wrappers: string[]): boolean {
-        let areElementsInjected = false;
-
+    static injectElements(elements: HTMLElement[], wrappers: string[], prepend: boolean = false, injectToParent: boolean = false): boolean {
         for (let x = 0; x < wrappers?.length; x++) {
             const wrapper = document.querySelectorAll(wrappers[x])
 
             if (wrapper[0]) {
-                elements.forEach(elm => {
-                    wrapper[0].appendChild(elm)
+                const finalWrapper = injectToParent ? wrapper[0].parentElement : wrapper[0]
+                const finalElements = prepend ? elements?.reverse() : elements
+
+                finalElements.forEach(elm => {
+                    if (prepend) {
+                        finalWrapper?.prepend(elm)
+                    } else {
+                        finalWrapper?.appendChild(elm)
+                    }
                 })
-                areElementsInjected = true
-                break
+                
+                return true
             }
         }
 
-        return areElementsInjected
+        return false
     }
 }
