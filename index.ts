@@ -1,5 +1,5 @@
-import SampleClass from './src/SampleClass'
+import ElementsUtils from './src/utils/ElementsUtils'
 
 export {
-    SampleClass
+    ElementsUtils
 }
