@@ -1,7 +1,12 @@
 {
   "name": "hengamify",
-  "version": "0.0.2",
+  "version": "1.0.2",
   "description": "Some utils to interact with Shopify stores",
+  "homepage": "https://github.com/mj-the-developer/hengamify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mj-the-developer/hengamify"
+  },
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
