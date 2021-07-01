@@ -28,8 +28,10 @@ export default class InjectionUtils {
     }
 
     /**
-     * Try to inject the provided elements to one of 
-     * the wrappers provided in the wrappers list or their parents
+     * Try to append or prepend the provided elements to one of 
+     * the wrappers provided in the wrappers list or their parents.
+     * The method reverse the order of elements if the elements are going to
+     * prepend to the wrapper
      * 
      * @param elements List of HTML elements to inject to one of the wrappers
      * @param wrappers List of desired wrappers to inject the elements into them
