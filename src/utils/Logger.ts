@@ -39,36 +39,6 @@ export default class Logger {
     }
 
     /**
-     * Log the message to the browser console
-     * 
-     * @param message The message to log to the browser console
-     * @param level The level of the log e.g. 1 for debug, 4 for error, etc
-     * @returns Null if the class is not enabled
-     */
-    private log(message: string, level: log.LogLevelNumbers) {
-        if (!this.isEnabled) return
-
-        const msg = `%c${this.appName}: ${message}`
-        // @ts-ignore
-        const style = `color:${colors[level]};font-weight:500;font-size:12px`
-
-        switch (Number(level)) {
-            case 0:
-            case 1:
-                log.debug(msg, style)
-                break
-            case 2:
-                log.info(msg, style)
-                break
-            case 3:
-                log.warn(msg, style)
-                break
-            case 4:
-                log.error(msg, style)
-        }
-    }
-
-    /**
      * Log the debug messages
      * 
      * @param message The message to log to the browser console
@@ -102,5 +72,35 @@ export default class Logger {
      */
     public error(message: string): void {
         this.log(message, log.levels.ERROR)
+    }
+
+    /**
+     * Log the message to the browser console
+     * 
+     * @param message The message to log to the browser console
+     * @param level The level of the log e.g. 1 for debug, 4 for error, etc
+     * @returns Null if the class is not enabled
+     */
+    private log(message: string, level: log.LogLevelNumbers) {
+        if (!this.isEnabled) return
+
+        const msg = `%c${this.appName}: ${message}`
+        // @ts-ignore
+        const style = `color:${colors[level]};font-weight:500;font-size:12px`
+
+        switch (Number(level)) {
+            case 0:
+            case 1:
+                log.debug(msg, style)
+                break
+            case 2:
+                log.info(msg, style)
+                break
+            case 3:
+                log.warn(msg, style)
+                break
+            case 4:
+                log.error(msg, style)
+        }
     }
 }
