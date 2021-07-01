@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SampleClass = void 0;
-var SampleClass_1 = require("./src/SampleClass");
-exports.SampleClass = SampleClass_1.default;
+exports.StyleUtils = void 0;
+var StyleUtils_1 = require("./src/utils/StyleUtils");
+exports.StyleUtils = StyleUtils_1.default;
