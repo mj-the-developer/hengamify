@@ -1,10 +1,10 @@
 import Hengamify from './src/Hengamify'
 import Logger from './src/utils/Logger'
-import SampleClass from './src/SampleClass'
+import ElementsUtils from './src/utils/ElementsUtils'
 
 export default Hengamify
 
 export {
     Logger,
-    SampleClass
+    ElementsUtils,
 }
