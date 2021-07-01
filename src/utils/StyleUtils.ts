@@ -29,7 +29,7 @@
      * @param elm Element to apply the style
      * @param styles Styles to apply to the element
      */
-    static applyUserCustomizedStyle(elm: HTMLElement, styles: any): void {
+    static applyInlineStyles(elm: HTMLElement, styles: any): void {
         let cssText = elm.style.cssText
     
         for (const [key, value] of Object.entries(styles)) {
