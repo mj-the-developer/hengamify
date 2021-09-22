@@ -2,110 +2,131 @@
  * Utilities to check URL and catch any useful information from it
  */
 export default class UrlUtils {
-    /**
-     * Get current URL
-     * 
-     * @returns The current URL
-     */
-    static getCurrentUrl(): string {
-        return window.location.href
+  /**
+   * Get current URL
+   * 
+   * @returns The current URL
+   */
+  static getCurrentUrl(): string {
+    return window.location.href;
+  }
+
+  /**
+   * Get the query parameter value from the URL
+   * 
+   * @param name Name or key of the query parameter
+   * @param url The URL which the query parameter resides in
+   * @returns The value of the query parameter or null if the query parameter
+   * does not exist
+   */
+  static getQueryParameter(name: string, url: string): (string | null) {
+    try {
+      if (!url) return '';
+
+      name = name.replace(/[[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+
+      if (!results) return null;
+      if (!results[2]) return '';
+
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    } catch (e) {
+      return null;
     }
+  }
 
-    /**
-     * Get the query parameter value from the URL
-     * 
-     * @param name Name or key of the query parameter
-     * @param url The URL which the query parameter resides in
-     * @returns The value of the query parameter or null if the query parameter
-     * does not exist
-     */
-    static getQueryParameter(name: string, url: string): (string | null) {
-        try {
-            if (!url) return ''
+  /**
+   * Sanitize URL and remove unnecessary query parameters from it
+   * 
+   * @returns The sanitized URL
+   */
+  static sanitizeUrl(url: string): string {
+    return url.replace(/^([^#?]+)(?:.*)$/, "$1");
+  }
 
-            name = name.replace(/[[\]]/g, '\\$&')
-            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url)
+  /**
+   * Get the base URL for shopify API
+   * 
+   * @returns The base URL
+   */
+  static getBaseURL(): (string | null) {
+    const url = UrlUtils.getCurrentUrl();
+    const matched = url.match(/^((?:https?:\/\/)?[\w\.\-]+)\/?.*$/);
+    if (matched) return matched[1];
+    return null;
+  }
 
-            if (!results) return null
-            if (!results[2]) return ''
+  /**
+   * Determine if the current page is Shopify product page
+   * 
+   * @returns Boolean that indicates if the current page is Shopify product page
+   */
+  static isProductPage(): boolean {
+    const url = UrlUtils.getCurrentUrl();
+    return Boolean(url && /.+\/products\/.+/.test(url));
+  }
 
-            return decodeURIComponent(results[2].replace(/\+/g, ' '))
-        } catch (e) {
-            return null
-        }
-    }
+  /**
+   * Determine if the current page is Shopify collection page
+   * 
+   * @returns Boolean that indicates if the current page is Shopify collection page
+   */
+  static isCollectionPage(): boolean {
+    const url = UrlUtils.getCurrentUrl();
+    return Boolean(url && /.+\/collections\/.*/.test(url));
+  }
 
-    /**
-     * Sanitize URL and remove unnecessary query parameters from it
-     * 
-     * @returns The sanitized URL
-     */
-    static sanitizeUrl(url: string): string {
-        return url.replace(/^([^#?]+)(?:.*)$/, "$1")
-    }
+  /**
+   * Determine if the current page is home page
+   * 
+   * @returns Boolean that indicates if the current page is home page
+   */
+  static isHomePage(): boolean {
+    const url = UrlUtils.getCurrentUrl();
+    return UrlUtils.getBaseURL() === url.replace(/\/+$/, "");
+  }
 
-    /**
-     * Get the base URL for shopify API
-     * 
-     * @returns The base URL
-     */
-    static getBaseURL(): (string | null) {
-        const url = UrlUtils.getCurrentUrl()
-        const matched = url.match(/^((?:https?:\/\/)?[\w\.\-]+)\/?.*$/)
-        if (matched) return matched[1]
-        return null
-    }
+  /**
+   * Check if the URL has variant query parameter
+   * 
+   * @returns Boolean which indicates if the variant query parameter exists on
+   * the URL
+   */
+  static hasInitialVariantParam(): boolean {
+    const url = window?.location?.href ?? '';
+    return Boolean(url && (new RegExp('.*variant=.*')).test(url));
+  }
 
-    /**
-     * Determine if the current page is Shopify product page
-     * 
-     * @returns Boolean that indicates if the current page is Shopify product page
-     */
-    static isProductPage(): boolean {
-        const url = UrlUtils.getCurrentUrl()
-        return Boolean(url && /.+\/products\/.+/.test(url))
-    }
+  /**
+   * Get first collection slug to use in calling Shopify APIs
+   * 
+   * @returns The first collection slug to use in calling Shopify API
+   */
+  static getCollectionSlug(): string {
+    const url = window?.location?.href ?? '';
+    const urlArr = UrlUtils.sanitizeUrl(url).split('/collections/');
+    return (urlArr[1].split('/'))[0];
+  }
 
-    /**
-     * Determine if the current page is Shopify collection page
-     * 
-     * @returns Boolean that indicates if the current page is Shopify collection page
-     */
-    static isCollectionPage(): boolean {
-        const url = UrlUtils.getCurrentUrl()
-        return Boolean(url && /.+\/collections\/.*/.test(url))
-    }
+  /**
+   * Check if some specific query parameter has been changed and call the callback method
+   * 
+   * @param targetParam The key of the parameter in querystring
+   * @param callback The method which is going to call after the query value has changed
+   * @param intervalTime The interval to check if the query parameter has been changed
+   */
+  static addUrlChangeListener(targetParam: string, callback: Function, intervalTime: number = 200): void {
+    let prevQueryValue: string | number | null;
+    let queryValue: string | number | null;
 
-    /**
-     * Determine if the current page is home page
-     * 
-     * @returns Boolean that indicates if the current page is home page
-     */
-    static isHomePage(): boolean {
-        const url = UrlUtils.getCurrentUrl()
-        return UrlUtils.getBaseURL() === url.replace(/\/+$/, "")
-    }
+    setInterval(() => {
+      queryValue = UrlUtils.getQueryParameter(targetParam, window.location.href);
 
-    /**
-     * Check if the URL has variant query parameter
-     * 
-     * @returns Boolean which indicates if the variant query parameter exists on
-     * the URL
-     */
-    static hasInitialVariantParam(): boolean {
-        const url = window?.location?.href ?? ''
-        return Boolean(url && (new RegExp('.*variant=.*')).test(url))
-    }
-
-    /**
-     * Get first collection slug to use in calling Shopify APIs
-     * 
-     * @returns The first collection slug to use in calling Shopify API
-     */
-    static getCollectionSlug(): string {
-        const url = window?.location?.href ?? ''
-        const urlArr = UrlUtils.sanitizeUrl(url).split('/collections/')
-        return (urlArr[1].split('/'))[0]
-    }
+      if (Boolean(queryValue) && queryValue !== prevQueryValue) {
+        prevQueryValue = queryValue;
+        callback(queryValue);
+      }
+    }, intervalTime);
+  }
 }
