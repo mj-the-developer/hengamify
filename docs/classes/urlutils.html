@@ -93,6 +93,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="urlutils.html#addurlchangelistener" class="tsd-kind-icon">add<wbr>Url<wbr>Change<wbr>Listener</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="urlutils.html#getbaseurl" class="tsd-kind-icon">get<wbr>BaseURL</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="urlutils.html#getcollectionslug" class="tsd-kind-icon">get<wbr>Collection<wbr>Slug</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="urlutils.html#getcurrenturl" class="tsd-kind-icon">get<wbr>Current<wbr>Url</a></li>
@@ -127,6 +128,49 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="addurlchangelistener" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> add<wbr>Url<wbr>Change<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Url<wbr>Change<wbr>Listener<span class="tsd-signature-symbol">(</span>targetParam<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span>, intervalTime<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L119">src/utils/UrlUtils.ts:119</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if some specific query parameter has been changed and call the callback method</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>targetParam: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The key of the parameter in querystring</p>
+									</div>
+								</li>
+								<li>
+									<h5>callback: <span class="tsd-signature-type">Function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The method which is going to call after the query value has changed</p>
+									</div>
+								</li>
+								<li>
+									<h5>intervalTime: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 200</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The interval to check if the query parameter has been changed</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="getbaseurl" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>BaseURL</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -136,7 +180,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L53">src/utils/UrlUtils.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L53">src/utils/UrlUtils.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -159,7 +203,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L106">src/utils/UrlUtils.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L106">src/utils/UrlUtils.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -182,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L10">src/utils/UrlUtils.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L10">src/utils/UrlUtils.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -205,7 +249,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L22">src/utils/UrlUtils.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L22">src/utils/UrlUtils.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -244,7 +288,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L96">src/utils/UrlUtils.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L96">src/utils/UrlUtils.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -268,7 +312,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L75">src/utils/UrlUtils.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L75">src/utils/UrlUtils.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +335,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L85">src/utils/UrlUtils.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L85">src/utils/UrlUtils.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -314,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L65">src/utils/UrlUtils.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L65">src/utils/UrlUtils.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -337,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/382e985/src/utils/UrlUtils.ts#L44">src/utils/UrlUtils.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/mj-the-developer/hengamify/blob/ce9f7fa/src/utils/UrlUtils.ts#L44">src/utils/UrlUtils.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -387,6 +431,9 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="urlutils.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="urlutils.html#addurlchangelistener" class="tsd-kind-icon">add<wbr>Url<wbr>Change<wbr>Listener</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="urlutils.html#getbaseurl" class="tsd-kind-icon">get<wbr>BaseURL</a>
